@@ -1,0 +1,18 @@
+# Broker Kafka-compatible en local (Redpanda, mismo protocolo que Kafka pero más ligero).
+# Levantar:  docker compose up -d
+# Parar:     docker compose down
+services:
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:v24.2.7
+    container_name: redpanda
+    command:
+      - redpanda
+      - start
+      - --smp=1
+      - --memory=1G
+      - --overprovisioned
+      - --node-id=0
+      - --kafka-addr=PLAINTEXT://0.0.0.0:9092
+      - --advertise-kafka-addr=PLAINTEXT://localhost:9092
+    ports:
+      - "9092:9092"

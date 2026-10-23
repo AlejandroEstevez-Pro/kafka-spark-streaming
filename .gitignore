@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Salida de Spark (se regenera al ejecutar)
+data/valid/*
+data/quarantine/*
+!data/valid/.gitkeep
+!data/quarantine/.gitkeep
+checkpoints/
+spark-warehouse/
