@@ -54,10 +54,16 @@ def estropear_evento(evento: dict) -> dict:
 def crear_productor(servidor: str):
     # Import aquí para que --dry-run funcione sin tener kafka-python instalado
     from kafka import KafkaProducer
+    from kafka.serializer import Serializer
+
+    # kafka-python 3.x exige un objeto Serializer (ya no vale una lambda).
+    class SerializadorJson(Serializer):
+        def serialize(self, topic, headers, data):
+            return json.dumps(data).encode("utf-8")
 
     return KafkaProducer(
         bootstrap_servers=servidor,
-        value_serializer=lambda v: json.dumps(v).encode("utf-8"),
+        value_serializer=SerializadorJson(),
     )
 
 

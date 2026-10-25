@@ -18,7 +18,7 @@ producer.py  ->  Kafka (Redpanda)  ->  Spark Structured Streaming  ->  data/vali
 - [x] `docker-compose.yml` con Redpanda
 - [x] Consumidor Spark: validación y separación válidos / cuarentena (lógica probada con eventos de ejemplo)
 - [x] Métricas por ventanas de 1 minuto y tienda (por consola)
-- [ ] Prueba de extremo a extremo con Kafka real
+- [x] Prueba de extremo a extremo con Kafka real (Redpanda en Docker → Spark → Parquet / cuarentena)
 - [ ] Diagrama y capturas
 
 ## Estructura
